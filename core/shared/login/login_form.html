@@ -1,0 +1,18 @@
+<div class="modal-body">
+<div class="form-group">
+		<label for="loginID">Login ID</label>
+		<input type="text" name="loginID" ng-model="user.loginID" class="form-control loginID-field">
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" name="password" ng-model="user.password" class="form-control">
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" ng-model="user.remember"> Remember me
+		</label>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" ng-click="doLogIn()" ng-disabled="canLogIn()" class="btn btn-primary btn-sm btn-block">Log In</button>
+</div>

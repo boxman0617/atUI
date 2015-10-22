@@ -1,0 +1,8 @@
+<div class="btn-group btn-group-sm" title="Deployments">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	<i class="fa fa-globe"></i> {{selectedDeployment.name}} <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li ng-repeat="deployment in deployments"><a href ng-click="selectDeployment(deployment)">{{deployment.name}}</a></li>
+	</ul>
+</div>

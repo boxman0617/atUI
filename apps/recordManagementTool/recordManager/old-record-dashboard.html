@@ -1,0 +1,151 @@
+<div id="workspace" class="row" workspace>
+	
+	<div id="saved-files" class="col-md-12 workspace-panel">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="section-suggestion">Saved Files:</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn-toolbar" style="text-align: right; margin-bottom: 10px;" align="right" role="toolbar" aria-label="Main toolbar">
+					<div class="btn-group" style="float: none;" role="group" aria-label="new file and clear all">
+						<button type="button" ng-click="startNewFileProcess()" class="btn btn-primary btn-xs">New File</button>
+						<button type="button" ng-disabled="filesClearActionDisabled" ng-click="clearAll()" class="btn btn-danger btn-xs">Clear All</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th width="6%">{{words.labels.ID}}</th>
+							<th width="35%">{{words.labels.name}}</th>
+							<th width="16%">{{words.labels.created_by}}</th>
+							<th width="15%">{{words.labels.created_on}}</th>
+							<th width="15%">{{words.labels.last_updated_on}}</th>
+							<th width="13%">{{words.labels.actions}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="!isThereAnyFilesToShow()">
+							<td colspan="6" align="center">- {{words.labels.no_files}} -</td>
+						</tr>
+						<tr ng-repeat="file in files | isDeleted">
+							<td>{{file.id}}</td>
+							<td>{{file.meta.name}}</td>
+							<td>{{file.meta.created_by}}</td>
+							<td>{{file.meta.created_on | amCalendar}}</td>
+							<td>{{file.meta.updated_on | amCalendar}}</td>
+							<td>
+								<a href="" class="btn btn-primary btn-hover-only btn-xs" role="button">Edit</a>
+								<a href="" ng-click="deleteFile(file)" class="btn btn-danger btn-hover-only btn-xs" role="button">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div id="file-editor" class="col-md-12 workspace-panel">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="section-suggestion">File:</h4>
+			</div>
+		</div>
+		<div class="row" ng-controller="RecordEditorController">
+			<div class="col-md-12">
+				
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- NEW FILE MODAL -->
+<div class="modal fade" new-file-modal id="newFileModal" ng-controller="NewFileController">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">New File</h4>
+			</div>
+			<div class="modal-body">
+				<form name="newFile" novalidate>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="platform">{{words.labels.platform}}</label>
+									<select class="form-control" ng-model="platform" id="modal-platform" ng-options="platform.name for platform in platforms">
+										<option value="">- Choose a Platform -</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group animated element-flip dim-trans" ng-class="{dim: platform === null}">
+									<label for="platform">{{words.labels.uif_versions}}</label>
+									<select class="form-control" ng-disabled="platform === null" ng-model="uif" ng-options="uif.name+' '+uif.version for uif in uifs">
+										<option value="">- Choose a UIF Version -</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group animated element-flip dim-trans" ng-class="{dim: uif === null}">
+									<label for="platform">{{words.labels.uif_types}}</label>
+									<select class="form-control" ng-disabled="uif === null" ng-model="uif_type" ng-options="uif_type.name+' '+uif_type.version for uif_type in uif_types">
+										<option value="">- Choose a UIF Type -</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="file_name">Name</label>
+									<input type="text" ng-model="name" name="name" class="form-control" id="file_name" placeholder="New File Name" required>
+									<p class="help-block">This is the name you will use to identify this file.</p>
+								</div>
+							</div>
+						</div>
+
+						<div fields>
+							<div class="row" ng-repeat="group in arc_groups">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title">{{group[0] | groupNameFilter}} Information</h3>
+										</div>
+										<div class="panel-body">
+											<div class="row">
+												<div ng-repeat="field in group[1]">
+													<div class="col-md-6">
+														<div segment-field sf-model="arc" sf-definitions="header_fields" sf-validation="arc_validation"></div>
+													</div>
+													<div class="clearfix" ng-if="$odd"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="discardNewFile()">Discard</button>
+				<button type="button" class="btn btn-primary" ng-click="createNewFile()">Create</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- NEW FILE MODAL // END -->

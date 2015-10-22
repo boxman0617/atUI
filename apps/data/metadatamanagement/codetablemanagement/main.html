@@ -1,0 +1,67 @@
+<div id="code-table-management" ng-controller="CodeTableManagementController">
+	<div class="row">
+		<div class="col-md-2">
+			<div sidebar-box autocomplete-box autocomplete-box-main class="at-list-viewer"></div>
+		</div>
+		<div class="col-md-10">
+			<div class="panel panel-default panel-sm" codes-table>
+				<div class="panel-heading">
+					Codes
+					<div class="panel-tools">
+						<div class="btn-group btn-group-xs" role="group">
+							<button tabindex="-1" type="button" class="btn btn-default" title="Expand to full screen" at-full-screen-button>
+								<i class="fa fa-expand"></i>
+							</button>
+							<button tabindex="-1" type="button" class="btn btn-default" title="Toggle Delete Mode" ng-click="toggleTrashMode()">
+								<i class="fa fa-trash"></i>
+							</button>
+							<button tabindex="-1" type="button" class="btn btn-default" title="Add new Field" ng-click="addNewCode()">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body panel-no-padding">
+					<div class="row segment-field-heading">
+						<div class="col-md-2">
+							<div class="row">
+								<div class="col-md-2">
+									<a href="" ng-click="deSelect()" class="btn btn-default btn-xs"><i class="fa fa-square-o"></i></a>
+								</div>
+								<div class="col-md-3">Value</div>
+								<div class="col-md-7">Short Name</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="row">
+								<div class="col-md-4">Description</div>
+								<div class="col-md-3">Comments</div>
+								<div class="col-md-5">Parent</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="row">
+								<div class="col-md-1">Order</div>
+								<div class="col-md-2">Created By</div>
+								<div class="col-md-3">Created On</div>
+								<div class="col-md-2">Updated By</div>
+								<div class="col-md-3">Updated On</div>
+								<div class="col-md-1"></div>
+							</div>
+						</div>
+					</div>
+					<div class="segment-fields">
+						<div ng-repeat="code in codes | orderBy:'codeValue'" class="row panel-row-item" ng-animate="'animate'" code></div>
+					</div>
+				</div>
+			</div>
+			<div align="right">
+				<a href="" id="code-table-action-button" ng-disabled="!dirty" ng-click="saveChanges()" class="btn btn-primary btn-sm">Save Changes</a>
+				<a href="" id="code-table-action-button-cancel" ng-disabled="!dirty" ng-click="cancel()" class="btn btn-default btn-sm">Cancel</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" code-parent-modal></div><!-- /.modal -->
+
+</div>

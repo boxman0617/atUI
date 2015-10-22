@@ -1,0 +1,51 @@
+#apis, #adminPages {
+	.panel-heading {
+		.form-control {
+			position: absolute;
+			width: 20%;
+			top: 7px;
+			right: 9px;
+			&.normal-input {
+				position: static;
+				width: 100%;
+				top: auto;
+				right: auto;
+			}
+		}
+	}
+	.panel-body {
+		padding: 10px 9px;
+		.well {
+			&:last-child {
+				margin-bottom: 0;
+			}
+			
+			.path-prefix {
+				color: #909090;
+			}
+			.path-call {
+				font-weight: bold;
+				.path-param {
+					color: #1778CC;
+				}
+			}
+		}
+	}
+	[at-label] {
+		display: inline-block;
+		width: 54px;
+	}
+	
+	.permissions-panel-body {
+		height: 200px;
+		.overflow-list {
+			height: 150px;
+			overflow-y: scroll;
+			padding: 0 5px;
+			label {
+				margin: 0;
+				font-size: 14px;
+			}
+		}
+	}
+}

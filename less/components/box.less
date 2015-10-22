@@ -1,0 +1,38 @@
+.box {
+	border-top: @box-border-top-color;
+	border-left: @box-border-colors;
+	border-right: @box-border-colors;
+	border-bottom: @box-border-colors;
+	border-style: solid;
+	border-top-width: 2px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	margin-bottom: 20px;
+	.rounded(5px);
+
+	.box-header {
+		padding: 5px 10px;
+		border-bottom: 1px solid @box-border-colors;
+		margin-bottom: 5px;
+		h3 {
+			font-weight: bold;
+			margin: 0; padding: 0;
+			font-size: 12px;
+		}
+	}
+
+	.box-inner {
+		padding: 0 10px 10px;
+	}
+
+	.box-footer {
+		padding: 5px 10px;
+		background-color: darken(@app-background-color, 5%);
+	}
+
+	.table {
+		.border-radius(5px, 0, 0, 5px);
+		margin-bottom: 0;
+	}
+}

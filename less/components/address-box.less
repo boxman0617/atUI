@@ -1,0 +1,70 @@
+@address-box-icon-font-size: 19px;
+
+.address-box-wrapper {
+	.row {
+		margin-bottom: 20px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.address-box {
+		background-color: @address-box-background-color;
+		border: 1px solid darken(@address-box-background-color, 5%);
+		margin-bottom: 10px;
+		.rounded(5px);
+		&:hover {
+			.edit, .close {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+				filter: alpha(opacity=30);
+				opacity: .3;
+			}
+		}
+		button.edit {
+			-webkit-appearance: none;
+			padding: 2px 4px 0 0;
+			cursor: pointer;
+			background: 0 0;
+			border: 0;
+		}
+		.edit {
+			float: right;
+			font-size: 21px;
+			font-weight: 700;
+			line-height: 1;
+			color: #000;
+			text-shadow: 0 1px 0 #fff;
+			filter: alpha(opacity=20);
+			opacity: .2;
+			font-size: @address-box-icon-font-size;
+			&:hover {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+				filter: alpha(opacity=50);
+				opacity: .5;
+			}
+		}
+		.close {
+			padding: 1px 4px 0 0;
+			font-size: @address-box-icon-font-size;
+		}
+		.inner {
+			padding: 10px;
+		}
+		address {
+			margin: 0;
+		}
+
+		.context {
+			margin-top: 5px;
+			.status, .type {
+				float: left;
+				width: 50%;
+				text-align: center;
+				background-color: @white;
+			}
+		}
+	}
+}

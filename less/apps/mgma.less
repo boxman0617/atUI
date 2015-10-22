@@ -1,0 +1,253 @@
+// MGMA
+@import (reference) "../font_awesome/css/font-awesome.less";
+#mgma {
+	@toolbar-height: 27px;
+	
+	margin-top: @stage-wrapper-padding-top * -1;
+	margin-left: (@stage-wrapper-padding-left + 15px) * -1;
+	margin-right: (@stage-wrapper-padding-left + 15px) * -1;
+
+	.form-group {
+		margin-bottom: 1px;
+		.input-sm {
+			height: 24px;
+			padding: 2px 7px;
+		}
+	}
+	
+	.toolbar {
+		background-color: @app-nav-background-color;
+		border-bottom: 1px solid darken(@app-nav-background-color, 10%);
+		padding: 3px 10px;
+		position: relative;
+		height: @toolbar-height;
+		
+		.toolbar-item {
+			@size: 25px;
+			&:first-child {
+				padding-right: 0;
+			}
+			width: @size;
+			height: @size;
+			a {
+				color: lighten(black, 10%);
+				display: block;
+				width: 100%; height: 100%;
+				text-align: center;
+			}
+			&.active, &:hover {
+				background-color: darken(@app-nav-background-color, 5%);
+				border: 1px solid darken(@app-nav-background-color, 10%);
+			}
+		}
+		.item-right {
+			float: right;
+		}
+	}
+	
+	.mgma-stage {
+		padding-left: @stage-wrapper-padding-left + 15px;
+		padding-right: @stage-wrapper-padding-left + 15px;
+		padding-top: @stage-wrapper-padding-top;
+		position: relative;
+
+		.include-slide.ng-enter, .include-slide.ng-leave {
+			-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+			transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+			
+			position: absolute;
+			left: @stage-wrapper-padding-left + 15px;
+			right: @stage-wrapper-padding-left + 15px;
+			display: block;
+		}
+
+		.include-slide {
+			&.ng-enter {
+				//top: -2000px;
+				opacity: 0;
+				&.ng-enter-active {
+					opacity: 1;
+					//top: 0;
+				}
+			}
+		}
+		
+		.include-slide {
+			&.ng-leave {
+				opacity: 1;
+				//top: 0;
+				&.ng-leave-active {
+					opacity: 0;
+					//top: 2000px;
+				}
+			}
+		}
+		
+		.include-fade.ng-enter, .include-fade.ng-leave {
+			-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+			transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+			
+			position: absolute;
+			left: @stage-wrapper-padding-left + 15px;
+			right: @stage-wrapper-padding-left + 15px;
+			display: block;
+		}
+		
+		.include-fade {
+			&.ng-enter {
+				opacity: 0;
+				&.ng-enter-active {
+					opacity: 1;
+				}
+			}
+		}
+		
+		.include-fade {
+			&.ng-leave {
+				opacity: 1;
+				&.ng-leave-active {
+					opacity: 0;
+				}
+			}
+		}
+	}
+}
+
+[at-list-viewer] {
+	.user-select(none);
+	background-color: @app-nav-background-color;
+	padding: 3px;
+	border: 1px solid darken(@app-nav-background-color, 10%);
+	.list-viewer-toolbar {
+		.container-fluid {
+			padding: 0;
+			.row {
+				margin: 0;
+				div:first-child {
+					padding-left: 0;
+				}
+				div:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		.title {
+			.fa-stack {
+				i:last-child {
+					top: 12px;
+				}
+			}
+		}
+	}
+	.list-viewer-wrapper {
+		border: 1px solid darken(@app-nav-background-color, 5%);
+		background-color: darken(@app-background-color, 2%);
+		width: 100%;
+		padding: 5px;
+		margin-top: 5px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		[at-list-viewer-item] {
+			.list-viewer-item-wrapper {
+				&.selected {
+					a {
+						background-color: @brand_color_4;
+					}
+				}
+				a {
+					display: block;
+					padding: 3px 5px;
+					text-decoration: none;
+					color: @darker_grey;
+					text-transform: uppercase;
+					&:hover {
+						background-color: lighten(@brand_color_4, 20%);
+					}
+				}
+			}
+		}
+	}
+
+	.fa-stack {
+		i:first-child {
+			font-size: 15px;
+			position: absolute;
+			top: 5px;
+			left: 6px;
+		}
+		i:last-child {
+			color: #2B74FA;
+			position: absolute;
+			top: 4px;
+			left: 14px;
+			font-size: 10px;
+		}
+	}
+}
+
+@import "mgma/panels";
+@import "mgma/segments";
+@import "mgma/listviewer";
+@import "mgma/treeviewer";
+@import "mgma/contextmenu";
+@import "mgma/notificationcenter";
+@import "mgma/recordlayout";
+@import "mgma/autocompleteBox";
+@import "mgma/codes";
+@import "mgma/diff";
+
+.full-screen {
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 1040;
+	margin: 0; padding: 0;
+	.panel-body {
+		height: auto !important;
+		position: absolute;
+		top: @panel-heading-height;
+		left: 0; right: 0; bottom: 0;
+	}
+	.segment-fields {
+		height: auto !important;
+		position: absolute;
+		top: @panel-heading-height;
+		left: 0; right: 0; bottom: 0;
+	}
+}
+
+.full-height {
+	height: 100%;
+}
+
+#debug {
+	position: fixed;
+	bottom: 10px;
+	right: 0;
+	height: 400px;
+	width: 400px;
+	overflow-y: scroll;
+	background-color: #cccccc;
+	padding: 5px;
+	z-index: 100000;
+}
+
+.dropzone {
+	margin-top: 11px;
+	.dz-message {
+		text-align: center;
+	}
+}
+
+.fa-god {.fa-globe;}
+.fa-platform {.fa-hdd-o;}
+.fa-gbif {.fa-code-fork;}
+.fa-gbif_type {.fa-cube;}
+.fa-gbif_subtype {.fa-cubes;}
+.fa-segment {.fa-puzzle-piece;}
+.fa-field {.fa-pencil-square-o;}
+
+.fa-locked-false {.fa-unlock;}
+.fa-locked-true {.fa-lock;}
+
+.fa-checked_out-false {.fa-download();}
+.fa-checked_out-true {.fa-upload();}

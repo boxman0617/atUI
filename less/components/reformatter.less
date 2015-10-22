@@ -1,0 +1,64 @@
+.table-container {
+	position: relative;
+	.table-wrapper {
+		overflow-y: auto;
+		margin-top: 25px;
+		border-top: 2px solid #ddd;
+		table {
+			th {
+				height: 0 !important;
+				line-height: 0 !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				color: transparent !important;
+				border: none;
+				white-space: nowrap !important;
+			}
+			thead > tr > th:first-child div {
+				border-top: 0;
+				border-left: 0;
+			}
+			thead > tr > th div {
+				border-left: 1px solid #ddd;
+				padding: 5px;
+				vertical-align: bottom;
+				line-height: 1.42857143;
+				position: absolute;
+				top: -25px;
+				color: #333;
+				margin-left: -5px;
+				border-right-width: 0;
+			}
+		}
+	}
+}
+
+
+html.dragging-something {
+	.mapped-to {
+		&.over {
+			background-color: #8BD0D6;
+		}
+	}
+}
+
+[new-reformatter] {
+	.layout-panel {
+		.list-group-item {
+			.user-select(none);
+			cursor: -moz-grab;
+			cursor: -webkit-grab;
+			cursor: grab;
+		}
+	}
+}
+
+[dragging-object] {
+	padding: 5px;
+	background-color: #E1EAF2;
+	opacity: 0.9;
+	position: fixed;
+	.rounded(5px);
+
+	.box-shadow(0 5px 25px 0 rgba(0,0,0,.3));
+}

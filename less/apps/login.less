@@ -1,0 +1,47 @@
+#loginAppHTML {
+	height: 100%;
+	body {
+		height: 100%;
+	}
+}
+
+#loginApp {
+	background: #f4f4f4; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #f4f4f4 0%, #d6d6d6 37%, #bcbcbc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#f4f4f4), color-stop(37%,#d6d6d6), color-stop(100%,#bcbcbc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #f4f4f4 0%,#d6d6d6 37%,#bcbcbc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #f4f4f4 0%,#d6d6d6 37%,#bcbcbc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #f4f4f4 0%,#d6d6d6 37%,#bcbcbc 100%); /* IE10+ */
+	background: linear-gradient(135deg,  #f4f4f4 0%,#d6d6d6 37%,#bcbcbc 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#bcbcbc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#loginStage {
+	@center-box-width: 350px;
+
+	.center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.login-box {
+		width: @center-box-width;
+		background-color: #ffffff;
+		margin-top: 200px;
+		padding: 30px;
+		border-radius: 5px;
+		border: 1px solid #C5C5C5;
+
+		.checkbox label {
+			line-height: 20px;
+		}
+
+		.img-logo {
+			width: 115px;
+			margin-bottom: 25px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

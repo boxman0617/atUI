@@ -1,0 +1,9 @@
+<div class="segment-main">
+	<div class="segment-icon"><i class="fa fa-segment"></i></div>
+	<div class="segment-name">
+		{{segment.name}} <span ng-if="!segment.latest">- v{{segment.version}}</span>
+		<span class="label label-info" style="margin-left: 10px;" ng-if="segment.latest">Latest</span>
+		<span class="label label-warning" style="margin-left: 10px;" ng-if="!segment.latest">Static</span>
+	</div>
+</div>
+<div class="segment-children"></div>

@@ -1,0 +1,19 @@
+<div id="metadata-management" ng-controller="ReformatterController">
+	<div class="row">
+		<div class="col-md-2">
+			<div at-list-viewer 
+				id="reformatter-list-viewer" 
+				icon="code" 
+				new-hover-title="Create new Reformatter" 
+				at-title="Reformatters" 
+				list="reformatterList" 
+				on-select="selectReformatter(item)" 
+				new-item="newReformatter()"
+				loaded="loaded">
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="include-slide" ng-include="current_view"></div>
+		</div>
+	</div>
+</div>

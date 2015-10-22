@@ -1,0 +1,28 @@
+<div class="diff-item-inner diff-item-layout" 
+	ng-class="{
+		'missing': item.__MISSING,
+		'exploded': exploded
+	}"
+>
+	<div class="info" ng-click="openSegments()">
+		<div class="name">{{item.name}} {{item.description}}</div>
+		<span class="label label-default">Layout</span>
+	</div>
+	<div class="layout-info item-info" ng-show="layout != null">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Layout Details</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">Description:</div>
+					<div class="col-md-9">{{layout.description}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="children" ng-show="segments != null">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Segments</div>
+			<div class="panel-body segments-panel"></div>
+		</div>
+	</div>
+</div>

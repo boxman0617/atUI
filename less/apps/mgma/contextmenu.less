@@ -1,0 +1,44 @@
+// Apps context menu
+.context-menu {
+	position: fixed;
+	min-width: 200px;
+	border: 1px solid darken(@light_grey, 20%);
+	padding: 2px 0;
+	background-color: @white;
+	z-index: 1000;
+	.box-shadow(4px 4px 2px -2px rgba(0,0,0,0.5));
+
+	.context-menu-separator {
+		background-color: lighten(@light_grey, 2%);
+		margin: 3px 0;
+		height: 1px;
+	}
+
+	.context-menu-item {
+		&.disabled {
+			a {
+				cursor: not-allowed;
+				color: lighten(@darker_grey, 40%);
+				&:hover {
+					background-color: screen(lighten(@brand_color_1, 10%), #666666);
+					color: @white;
+				}
+			}
+		}
+		a {
+			font-size: 12px;
+			i {
+				padding: 0 10px;
+				//font-size: 14px;
+			}
+			display: block;
+			color: @darker_grey;
+			padding: 2px 3px;
+			text-decoration: none;
+			&:hover {
+				background-color: lighten(@brand_color_1, 10%);
+				color: @white;
+			}
+		}
+	}
+}

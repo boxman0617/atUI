@@ -1,0 +1,102 @@
+// Apps tree viewer
+.treeview {
+	.user-select(none);
+	border: 1px solid darken(@app-nav-background-color, 10%);
+	padding: 3px;
+	background-color: @app-nav-background-color;
+	.treeview-wrapper {
+		border: 1px solid darken(@app-nav-background-color, 5%);
+		background-color: darken(@app-background-color, 2%);
+		width: 100%;
+		height: 100%;
+		padding: 5px;
+		overflow: auto;
+
+		.node {
+			position: relative;
+			min-height: 20px;
+			font-size: 14px;
+
+			&.loading {
+				& > .node-indicator {
+					.fa {
+						.fa-spin;
+						.fa-spinner !important;
+					}
+				}
+			}
+			&.error {
+				& > .node-indicator {
+					.fa {
+						.fa-exclamation-triangle !important;
+						color: @yellow;
+					}
+				}
+			}
+
+			&:hover {
+				& > .node-icon {
+					color: lighten(@brand_color_1, 10%);
+					&:before {
+						content:'-';
+						position: absolute;
+						left: -27px;
+						top: -2px;
+					}
+				}
+				& > .node-name {
+					color: lighten(@darker_grey, 20%);
+				}
+			}
+
+			.node-indicator, .node-icon, .node-name {
+				position: absolute;
+			}
+
+			.node-indicator {
+				left: 5px;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			.node-icon {
+				left: 25px;
+				color: @darker_grey;
+			}
+			.node-name {
+				left: 45px;
+				color: @darker_grey;
+				white-space: nowrap;
+				padding-right: 10px;
+				cursor: pointer;
+			}
+			.node-children {
+				padding-top: 20px;
+				padding-left: 25px;
+			}
+
+			&.node-type-parent {
+				&.opened {
+					.node-indicator {
+						.fa {
+							.fa-minus-square-o;
+						}
+					}
+					.node-children {
+						display: block;
+					}
+				}
+				&.closed {
+					.node-indicator {
+						.fa {
+							.fa-plus-square-o;
+						}
+					}
+					.node-children {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

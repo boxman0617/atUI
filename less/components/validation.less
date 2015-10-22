@@ -1,0 +1,26 @@
+.form-group[show-errors] {
+	.help-block {
+		display: none;
+	}
+}
+.form-group[show-errors].has-error {
+	.help-block {
+		display: block;
+	}
+}
+.has-error {
+	label {
+		color: #a94442 !important;
+	}
+	.form-control {
+		.box-shadow(0 0 1px 1px rgba(169, 68, 66, 0.5));
+	}
+}
+.has-success {
+	input {
+		border-left-color: @cool_grey_4 !important;
+	}
+}
+.help-block {
+	font-size: 11px;	
+}

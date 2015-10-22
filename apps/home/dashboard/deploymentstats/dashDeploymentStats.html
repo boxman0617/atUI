@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Deployment Stats
+		<div class="btn-group pull-right">
+			<button type="button" class="btn btn-xs btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				{{d.name}} <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li ng-repeat="deployment in deployments">
+					<a href="" ng-click="selectDeployment(deployment)">{{deployment.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel-body">
+		<canvas id="deploymentStatsChart" class="chart chart-bar" chart-data="data" chart-labels="labels">
+		</canvas>
+	</div>
+</div>

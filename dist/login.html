@@ -1,0 +1,96 @@
+<!DOCTYPE html id="loginAppHTML">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUILogin" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUILogin" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUILogin" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>atUI - Login</title>
+
+		<!-- LINK:CSS:START -->
+		<link rel="stylesheet" href="assets/css/dep/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/dep/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="assets/css/dep/font-awesome.min.css">
+		<!-- LINK:CSS:END -->
+
+		<link href="assets/css/target/main.css" rel="stylesheet">
+
+		<!--[if lte IE 8]>
+		<script>
+			document.createElement('tags-input');
+		</script>
+		<![endif]-->
+	    <style>
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
+	    </style>
+	    <!--[if gte IE 9]>
+		  <style type="text/css">
+		    .gradient {
+		       filter: none;
+		    }
+		  </style>
+		<![endif]-->
+	</head>
+	<body id="loginApp" ng-controller="LoginScreenController" ng-cloak>
+		
+		<div id="loginStage">
+			<div class="center login-box">
+				<div class="img-logo center" style="text-align: center;">
+					<span style="font-size: 31px;
+    						color: #79BDFA;
+    						text-shadow: 0px 2px 3px #DCDCDC;">atUI</span>
+				</div>
+				<div class="form-group">
+					<label for="loginID">Login ID</label>
+					<input type="text" class="form-control" ng-model="user.loginID" id="loginID" placeholder="Enter Login ID" autofocus>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter Password" password-field>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="user.remember"> Remember me
+					</label>
+				</div>
+				<a href="" ng-click="logIn()" ng-disabled="canLogIn()" class="btn btn-block btn-primary">Log In</a>
+			</div>
+		</div>
+		
+		<div id="footer">
+			atUI Copyright
+		</div>
+
+		<div alert-box></div>
+
+		<div login-modal></div>
+
+		<!-- LINK:JS:IE8:START -->
+		<!--[if lte IE 8]><script type="text/javascript" src="assets/js/dep/respond.min.js"></script><![endif]-->
+		<!--[if lte IE 8]><script type="text/javascript" src="assets/js/dep/json.js"></script><![endif]-->
+		<!-- LINK:JS:IE8:END -->
+		
+		<!-- LINK:JS:IE:START -->
+		<!--[if IE]><script type="text/javascript" src="assets/js/dep/excanvas.js"></script><![endif]-->
+		<!-- LINK:JS:IE:END -->
+		
+		<!-- LINK:JS:START -->
+		<script src="assets/js/dep/jquery.min.js"></script>
+		<script src="assets/js/dep/bootstrap.min.js"></script>
+		<script src="assets/js/dep/angular.min.js"></script>
+		<script src="assets/js/dep/angular-animate.min.js"></script>
+		<script src="assets/js/dep/angular-route.min.js"></script>
+		<script src="assets/js/dep/simpleStorage.js"></script>
+		<script src="assets/js/dep/angular-jwt.min.js"></script>
+		<script src="assets/js/dep/angular-local-storage.min.js"></script>
+		<!-- LINK:JS:END -->
+
+		<!-- ANGULARJS APP -->
+		<script type="text/javascript" src="assets/js/target/app.min.js"></script>
+	</body>
+</html>

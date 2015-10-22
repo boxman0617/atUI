@@ -1,0 +1,63 @@
+[code] {
+	.btn-xs {
+		margin-top: 2px;
+	}
+
+	[class^=col-] {
+		overflow: hidden;
+		height: 32px;
+	}
+}
+
+[codes-table] {
+	&.full-screen {
+		.segment-fields {
+			top: 34px;
+		}
+	}
+	.row > [class^=col-] > .row [class^=col-] {
+		padding-top: 0;
+		padding-bottom: 0;
+		overflow-x: hidden;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	.fa-exclamation-triangle {
+		margin-top: 7px;
+	}
+
+	input[type="checkbox"] {
+		vertical-align: bottom;
+	}
+
+	.label {
+		vertical-align: bottom;
+		cursor: pointer;
+	}
+}
+
+[code-parent-modal] {
+	.form-control {
+		cursor: default;
+	}
+	.code-field {
+		padding: 3px 4px;
+		border: 1px solid #F2F2F2;
+		overflow-x: hidden;
+		white-space: nowrap;
+	}
+	.panel-row-item {
+		&:hover {
+			background-color: #EFEFEF;
+		}
+	}
+	.btn {
+		vertical-align: bottom;
+		margin-top: 4px;
+	}
+}

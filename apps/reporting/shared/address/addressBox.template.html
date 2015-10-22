@@ -1,0 +1,26 @@
+<div class="col-md-12 animated ngFlipOutX ngFlipInX">
+	<div class="address-box">
+		<button type="button" ng-click="removeAddress(address)" class="close">
+			<span aria-hidden="true"><i class="fa fa-trash"></i></span><span class="sr-only">Close</span>
+		</button>
+		<button type="button" ng-click="editAddress(address)" class="edit">
+			<span aria-hidden="true"><i class="fa fa-edit"></i></span><span class="sr-only">Edit</span>
+		</button>
+		<div class="inner">
+			<address>
+				{{address.street1}}<br>
+				<span ng-show="address.city != ''">{{address.city}}</span>
+				<span ng-show="address.state != null">, {{address.state}}</span>
+				{{address.postal}}<br>
+				{{address.country}}
+			</address>
+			<div ng-show="address.type != null || address.status != null">
+				<div class="context">
+					<div class="type">{{address.type || '-'}}</div>
+					<div class="status">{{address.status || '-'}}</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

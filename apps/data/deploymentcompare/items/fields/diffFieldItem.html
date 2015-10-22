@@ -1,0 +1,38 @@
+<div class="diff-item-inner diff-item-field" ng-mouseenter="mouseOver(item)" ng-mouseleave="mouseLeave(item)" ng-click="openField()" ng-class="{'missing': item.__MISSING}">
+	<div class="name">{{item.name}}</div>
+	<span class="label label-warning">Field</span>
+</div>
+
+<div class="details" ng-show="exploded">
+	<div class="field-info item-info">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Field Details</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">Code:</div>
+					<div class="col-md-8" ng-bind-html="details.__codeTableName"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Data Type:</div>
+					<div class="col-md-8" ng-bind-html="details.__dataTypeName"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Description:</div>
+					<div class="col-md-8" ng-bind-html="details.__description"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Number:</div>
+					<div class="col-md-8" ng-bind-html="details.__fieldNumber"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Length:</div>
+					<div class="col-md-8" ng-bind-html="details.__length"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Name:</div>
+					<div class="col-md-8" ng-bind-html="details.__name"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

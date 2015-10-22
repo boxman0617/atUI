@@ -1,0 +1,210 @@
+@import "../variables/login";
+
+#login-page {
+	background-color: @login-background-color;
+	#layout-wrapper {
+		width: @layout-width;
+		margin: 0 auto;
+
+		#heading-links {
+			padding: 19px 1px 5px;
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					display: inline;
+					a {
+						font-size: @login-heading-links-font-size;
+						text-decoration: none;
+						color: @login-heading-link-color;
+						&:hover {
+							text-decoration: underline;
+							color: @login-heading-link-color-hover;
+						}
+					}
+				}
+			}
+		}
+
+		#content-wrapper {
+			.box-shadow(0 0 20px -5px @darker_grey);
+			margin-bottom: 15px;
+
+			#logo {
+				background-color: @login-logo-background-color;
+				padding: 14px 20px 15px 17px;
+			}
+
+			#heading-tabs {
+				height: 72px;
+				line-height: 43px;
+				background: transparent url(../img/site-nav-bg.png) repeat-x scroll left top;
+			}
+
+			#marquee {
+				position: relative;
+				height: 225px;
+				background: #eff4f7 url(../img/marquee-access-225.png) 0 0 no-repeat;
+
+				h1, h2 {
+					position: absolute;
+					margin: 0;
+					padding: 0;
+					color: @login-marquee-font-color;
+					font-weight: bold;
+					text-transform: uppercase;
+				}
+				h1 {
+					font-size: 28px;
+					left: @login-marquee-text-left;
+					top: 25px;
+					sub {
+						font: normal 9px Arial;
+						vertical-align: text-top;
+						margin-left: -5px;
+					}
+				}
+				h2 {
+					font-size: 16px;
+					top: 61px;
+					left: @login-marquee-text-left;
+					line-height: 21px;
+				}
+			}
+
+			#page {
+				.separator {
+					border-bottom: 1px solid @login-page-content-heading-border-color;
+				}
+
+				#disclosure {
+					font-size: 10px;
+					padding-top: 20px;
+					color: @login-disclosure-color;
+				}
+
+				padding: 20px;
+				background-color: @login-page-background-color;
+
+				#page-content {
+					h2 {
+						font: normal 18px Arial;
+						border-bottom: 1px solid @login-page-content-heading-border-color;
+						color: @login-page-content-heading-color;
+						margin-bottom: 10px;
+						padding-bottom: 5px;
+					}
+
+					p {
+						font-size: 13px;
+					}
+				}
+
+				#login-bar {
+					.panel {
+						.panel-inner {
+							padding: 13px;
+						}
+						.gradient(@light_grey, @light_grey, lighten(@light_grey, 5%));
+						border: 1px solid @login-border-color;
+						.rounded(5px);
+					}
+					#login-form {
+						.heading {
+							.gradient(darken(@light_grey, 15%), darken(@light_grey, 15%), lighten(darken(@light_grey, 15%), 10%));
+							padding: 5px 6px 4px;
+							color: @login-heading-color;
+							font: bold 11px Tahoma;
+						}
+						form {
+							padding: 13px;
+						}
+					}
+
+					ul {
+						margin: 0;
+						padding: 0;
+						li {
+							background-position: -40px -21px;
+							background: transparent url(../img/sprite-li-bg.png) no-repeat scroll -40px -20px;
+							padding: 0 0 2px 11px;
+							list-style: none;
+							a {
+								font-size: 12px;
+								line-height: 1.66667;
+								color: @login-sidebar-link-color;
+								text-decoration: none;
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+
+					h4 {
+						padding: 0;
+						margin: 15px 0 5px;
+						font: bold 12px "Helvetica Neue",Arial,sans-serif;
+						color: @login-page-sidebar-h4;
+					}
+
+					p {
+						font-size: 12px;
+						line-height: 1.66667;
+					}
+
+					#support-info {
+						h3 {
+							margin: 0 0 5px;
+							font: bold 13px Arial;
+							color: @login-support-info-header-color;
+						}
+
+						address {
+							font-size: 13px;
+							span {
+								font-size: 11px;
+							}
+						}
+
+						a.email {
+							color: @login-sidebar-link-color;
+							text-decoration: none;
+							font-size: 13px;
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+
+			}
+
+			#footer {
+				.gradient(#fefefe, #fefefe, #f0f0f0);
+				border-top: 1px solid @cool_grey_3;
+				padding: 10px 15px;
+				h2 {
+					margin: 0;
+					padding: 0;
+					font-size: 11px;
+					color: @darker_grey;
+					font-weight: bold;
+					sub {
+						font: 400 7px Arial;
+						vertical-align: text-top;
+						margin-left: 1px;
+					}
+				}
+			}
+
+		}
+
+		#page-footer {
+			font-size: 10px;
+			color: @cool_grey_3;
+			padding-bottom: 20px;
+		}
+	}
+}

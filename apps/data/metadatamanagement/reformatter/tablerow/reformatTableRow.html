@@ -1,0 +1,5 @@
+<td ng-repeat="col in row">{{col}}</td>
+<td ng-mouseup="mouseUp()" ng-mouseenter="isOver = true" ng-mouseleave="isOver = false" class="mapped-to" ng-class="{'over': isOver}">
+	<span ng-show="mappedTo != null">{{layoutSelected.name}}.</span>{{mappedTo.__NAME}}
+</td>
+<td></td>

@@ -1,0 +1,174 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Segment</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group" show-errors>
+							<label for="name">Name</label>
+							<input type="text" autofocus ng-model="segment.name" class="form-control input-sm" id="name" readonly ng-required="true">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" show-errors>
+							<label for="full_name">Full Name</label>
+							<input type="text" ng-readonly="readStatus.amIReadOnly" ng-model="segment.shortDescription" class="form-control input-sm" id="full_name" placeholder="Full name of segment" ng-required="true">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<input type="text" ng-readonly="readStatus.amIReadOnly" ng-model="segment.description" class="form-control input-sm" id="description" placeholder="Segment description">
+				</div>
+				<div class="form-group" ng-if="!segment.locked.is" show-errors>
+					<label for="version">Version</label>
+					<input type="text" ng-readonly="readStatus.amIReadOnly" ng-pattern="/\d+\.\d+/" ng-model="segment.version" class="form-control input-sm" id="version" ng-required="true">
+				</div>
+				<div class="row" ng-if="segment.locked.is">
+					<div class="col-md-9">
+						<div class="form-group">
+							<label for="version">Version</label>
+							<input type="text" ng-readonly="true" ng-model="segment.version" class="form-control input-sm" id="version" ng-required="true">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<a href="" ng-click="cloneVersion()" class="btn btn-sm btn-default" style="margin-top: 20px;padding: 2px 24px;" title="Create a new version">New</a>
+					</div>
+				</div>
+				<div class="form-group" ng-if="segment.has_many_versions">
+					<label for="versions">Versions</label>
+					<select id="versions" class="form-control" ng-options="v.name for v in segment.versions" ng-model="version_data.other_version"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Created</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="created_on">Date</label>
+					<input type="text" ng-model="segment.created.on" class="form-control input-sm" id="created_on" ng-required="true" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label for="created_by">By</label>
+					<input type="text" ng-model="segment.created.by.name" class="form-control input-sm" id="created_by" ng-required="true" readonly="readonly">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Last Updated</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="updated_on">Date</label>
+					<input type="text" ng-model="segment.updated.on" class="form-control input-sm" id="updated_on" ng-required="true" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label for="updated_by">By</label>
+					<input type="text" ng-model="segment.updated.by.name" class="form-control input-sm" id="updated_by" ng-required="true" readonly="readonly">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">
+				Locked Status
+				<i class="fa fa-locked-{{segment.locked.is}}" title="{{segmentLockedMessage(segment.locked.is)}}"></i>
+			</div>
+			<div class="panel-body">
+				<div at-item-locked item="segment" item-name="segment" lock-action="lockSegment()"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">
+				Checked Out Status
+				<i class="fa fa-checked_out-{{segment.checked_out.is}}" title="{{segmentCheckedOutMessage(segment.checked_out.is)}}"></i>
+			</div>
+			<div class="panel-body">
+				<div at-item-checked-out item="segment" item-name="segment" check-in-action="checkIn(cb)" check-out-action="checkOut(cb)"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div id="fields-panel" class="panel panel-default panel-sm">
+			<div class="panel-heading">
+				Fields
+				<div class="panel-tools">
+					<div class="btn-group btn-group-xs" role="group">
+						<button tabindex="-1" type="button" class="btn btn-default" title="Expand to full screen" at-full-screen-button>
+							<i class="fa fa-expand"></i>
+						</button>
+						<button tabindex="-1" type="button" ng-disabled="readStatus.amIReadOnly" class="btn btn-default" title="Add new Field" ng-click="addNewField()">
+							<i class="fa fa-plus"></i>
+						</button>
+						<button tabindex="-1" type="button" ng-disabled="readStatus.amIReadOnly" at-lookup-refresh-button class="btn btn-default" title="Refresh Lookup table">
+							<i class="fa fa-refresh"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body panel-no-padding">
+				<div class="row segment-field-heading">
+					<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Number</h3></div>
+					<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Name</h3></div>
+					<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"><h3>Description</h3></div>
+					<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Type</h3></div>
+					<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Length</h3></div>
+					<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Lookup</h3></div>
+					<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Action</h3></div>
+				</div>
+				<div class="segment-fields" at-segment-fields>
+					<div at-segment-new-field class="fx-fade-down" field="field" last="$last" edit-mode="true" is-read-only="readStatus" first="$first" new-action="addNewField" lookup-dataset="lookupDataset" ng-repeat="field in segment.fields"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12" align="right">
+		<a href="" id="segment-delete-button" ng-if="!segment.locked.is" ng-click="deleteSegment()" title="Delete this Version" class="btn btn-danger btn-sm pull-left">Delete</a>
+		<a href="" id="segment-create-button" ng-disabled="canIUpdate()" ng-click="updateSegment()" class="btn btn-primary btn-sm">Update</a>
+	</div>
+</div>
+
+<div at-modal modal-id="segment-dependent-modal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<h4 class="modal-title">Hold on!</h4>
+	</div>
+	<div class="modal-body">
+		<h5>This Segment is depended upon by the following Layout(s):</h5>
+		<div class="well well-sm" ng-repeat="layout in dependentLayouts">
+			<div class="row" ng-repeat="(type, def) in layout">
+				<div class="col-md-2">
+					{{type}}
+				</div>
+				<div class="col-md-10">
+					{{def.description}}
+				</div>
+			</div>
+		</div>
+		<p>
+			This segment cannot be deleted. Please remove the above mentioned dependencies and try again.
+		</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+</div>

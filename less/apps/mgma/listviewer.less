@@ -1,0 +1,75 @@
+// Apps Listviewer
+[at-list-viewer], .at-list-viewer {
+	.user-select(none);
+	position: relative;
+	background-color: @app-nav-background-color;
+	padding: 3px;
+	border: 1px solid darken(@app-nav-background-color, 10%);
+	.list-viewer-toolbar {
+		.container-fluid {
+			padding: 0;
+			.row {
+				margin: 0;
+				div:first-child {
+					padding-left: 0;
+				}
+				div:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		.title {
+			.fa-stack {
+				i:last-child {
+					top: 12px;
+				}
+			}
+		}
+	}
+	.list-viewer-wrapper {
+		border: 1px solid darken(@app-nav-background-color, 5%);
+		background-color: darken(@app-background-color, 2%);
+		width: 100%;
+		padding: 5px;
+		margin-top: 5px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		[at-list-viewer-item], .at-list-viewer-item {
+			.list-viewer-item-wrapper {
+				&.selected, &.active {
+					a {
+						background-color: @brand_color_4;
+					}
+				}
+				a {
+					display: block;
+					padding: 3px 5px;
+					text-decoration: none;
+					color: @darker_grey;
+					text-transform: none;
+					overflow-x: hidden;
+					white-space: nowrap;
+					&:hover {
+						background-color: lighten(@brand_color_4, 20%);
+					}
+				}
+			}
+		}
+	}
+
+	.fa-stack {
+		i:first-child {
+			font-size: 15px;
+			position: absolute;
+			top: 5px;
+			left: 6px;
+		}
+		i:last-child {
+			color: #2B74FA;
+			position: absolute;
+			top: 4px;
+			left: 14px;
+			font-size: 10px;
+		}
+	}
+}

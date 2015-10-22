@@ -1,0 +1,31 @@
+.addons {
+	padding: 5px 10px;
+	
+	border: 1px solid @addons-border-color;
+	.rounded(5px);
+	background-color: @addons-background-color;
+}
+
+#productAddOnsBox {
+	.animate-slide {
+		margin-top: 10px;
+	}
+	.row {
+		margin-top: 10px;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	& + .show-more {
+		text-align: center;
+		background-color: @cool_grey_3;
+		margin-top: 10px;
+		color: @white;
+		font-size: 12px;
+		cursor: pointer;
+		&:hover {
+			background-color: lighten(@cool_grey_3, 5%);
+		}
+	}
+}

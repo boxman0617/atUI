@@ -1,0 +1,17 @@
+<div class="diff-item-inner diff-item-layout-segment" ng-click="toggleOpen()">
+	<div class="name">{{item.name}}</div>
+	<span class="label label-info">Segment</span>
+</div>
+
+<div class="details fx-fade-normal" ng-show="exploded">
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="field in fields" ng-mousedown="grabField($event, field)">
+			<strong>{{field.name}}</strong><br>
+			<small>{{field.description}}</small><br>
+			<small>Type: {{field.dataTypeName}}</small><br>
+			<small>Length: {{field.length}}</small>
+		</li>
+	</ul>
+</div>
+
+<div class="children children-{{item.children.length}}"></div>

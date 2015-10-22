@@ -1,0 +1,121 @@
+@-webkit-keyframes ball-grid-pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0.7; }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+@keyframes ball-grid-pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0.7; }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+.ball-grid-pulse {
+  width: 57px; }
+  .ball-grid-pulse > div:nth-child(1) {
+    -webkit-animation-delay: -0.06s;
+            animation-delay: -0.06s;
+    -webkit-animation-duration: 0.72s;
+            animation-duration: 0.72s; }
+  .ball-grid-pulse > div:nth-child(2) {
+    -webkit-animation-delay: 0.25s;
+            animation-delay: 0.25s;
+    -webkit-animation-duration: 1.02s;
+            animation-duration: 1.02s; }
+  .ball-grid-pulse > div:nth-child(3) {
+    -webkit-animation-delay: -0.17s;
+            animation-delay: -0.17s;
+    -webkit-animation-duration: 1.28s;
+            animation-duration: 1.28s; }
+  .ball-grid-pulse > div:nth-child(4) {
+    -webkit-animation-delay: 0.48s;
+            animation-delay: 0.48s;
+    -webkit-animation-duration: 1.42s;
+            animation-duration: 1.42s; }
+  .ball-grid-pulse > div:nth-child(5) {
+    -webkit-animation-delay: 0.31s;
+            animation-delay: 0.31s;
+    -webkit-animation-duration: 1.45s;
+            animation-duration: 1.45s; }
+  .ball-grid-pulse > div:nth-child(6) {
+    -webkit-animation-delay: 0.03s;
+            animation-delay: 0.03s;
+    -webkit-animation-duration: 1.18s;
+            animation-duration: 1.18s; }
+  .ball-grid-pulse > div:nth-child(7) {
+    -webkit-animation-delay: 0.46s;
+            animation-delay: 0.46s;
+    -webkit-animation-duration: 0.87s;
+            animation-duration: 0.87s; }
+  .ball-grid-pulse > div:nth-child(8) {
+    -webkit-animation-delay: 0.78s;
+            animation-delay: 0.78s;
+    -webkit-animation-duration: 1.45s;
+            animation-duration: 1.45s; }
+  .ball-grid-pulse > div:nth-child(9) {
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+    -webkit-animation-duration: 1.06s;
+            animation-duration: 1.06s; }
+  .ball-grid-pulse > div {
+    background-color: @brand_color_1;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    display: inline-block;
+    float: left;
+    -webkit-animation-name: ball-grid-pulse;
+            animation-name: ball-grid-pulse;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-delay: 0;
+            animation-delay: 0; }
+            
+.partial-load-screen {
+	&.loading {
+		display: block;
+	}
+	display: none;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 10000;
+	background-color: rgba(233, 233, 233, 0.6);
+}
+
+.spinner {
+	top: 50%;
+	width: 57px;
+	height: 57px;
+	position: absolute;
+	left: 50%;
+	margin-top: (57px / 2) * -1;
+	margin-left: (57px / 2) * -1;
+}
+
+#loading-screen {
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 10000;
+	background-color: rgba(8, 8, 8, 0.91);
+}

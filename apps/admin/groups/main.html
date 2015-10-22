@@ -1,0 +1,79 @@
+<div id="adminPages" class="groups" ng-controller="GroupsController">
+	<div at-notification-center>
+		<div ng-repeat="msg in queue.q" class="add-scale">
+			<div at-notification></div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Groups
+			<a href="" ng-click="startNew()" title="New Group" class="btn btn-xs btn-default" style="margin-left: 5px;">
+				<i class="fa fa-plus"></i>
+			</a>
+			<input type="search" class="form-control input-sm" ng-model="q" placeholder="Filter...">
+		</div>
+		<div class="panel-body">
+			<div class="well" ng-repeat="group in groups | filter:q as results">
+				<div class="row">
+					<div class="col-md-4">
+						<span class="label label-default">{{group.groupID}}</span> {{group.name}}
+					</div>
+					<div class="col-md-4">
+						<b>Description:</b> {{group.description}}
+					</div>
+					<div class="col-md-4" align="right">
+						<a href="" ng-click="onEdit(group)" class="btn btn-primary btn-xs">Edit</a>
+						<a href="" ng-click="onDelete(group)" class="btn btn-danger btn-xs">Delete</a>
+					</div>
+				</div>
+			</div>
+			<div class="well" ng-if="results.length == 0" align="center">
+				No results...
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" groups-modal>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Group</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="groupName">Name</label>
+						<input type="text" class="form-control" id="groupName" ng-model="group.name" />
+					</div>
+					<div class="form-group">
+						<label for="groupDescription">Description</label>
+						<textarea class="form-control" id="groupName" ng-model="group.description"></textarea>
+					</div>
+					<div class="row" style="height: 250px;">
+						<div class="col-md-5" style="height: 100%">
+							<h5>Available Users</h5>
+							<select style="height: 86%" name="usersIn" id="usersIn" class="form-control" ng-model="usersToMove" multiple>
+								<option ng-repeat="user in users" value="{{user.userID}}">{{user.name}}</option>
+							</select>
+						</div>
+						<div class="col-md-2" style="text-align:center; height:100%; padding-top: 102px;">
+							<p><button class="btn btn-default btn-xs" ng-click="moveUsers()">&gt;&gt;</button></p>
+							<p><button class="btn btn-default btn-xs" ng-click="removeUsers()">&lt;&lt;</button></p>
+						</div>
+						<div class="col-md-5" style="height: 100%">
+							<h5>Users in Group</h5>
+							<select style="height: 86%" name="usersOut" id="usersOut" class="form-control" ng-model="usersToRemove" multiple>
+								<option ng-repeat="user in usersOut" value="{{user.userID}}">{{user.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>

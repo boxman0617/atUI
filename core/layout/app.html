@@ -1,0 +1,37 @@
+<div id="header">
+	<div class="logo">
+		<div class="name">
+			atUI
+		</div>
+		<div class="navigation-toggle" nav-bar-trigger>
+			<a href="" ng-click="toggle()" title="Hide Menu">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+	</div>
+	<div class="toolbar">
+		<div class="btn-toolbar" role="toolbar">
+			<div class="btn-group btn-group-sm" toolbar-items-holder>
+			</div>
+		</div>
+	</div>
+	<div class="user-info">
+		<div user-profile></div>
+	</div>
+</div>
+
+<div id="navigation" nav-bar></div>
+
+<div id="stage" scroll-agent>
+	<div class="wrapper">
+		<div class="container-fluid">
+
+			<div class="view-container">
+				<div class="view-frame" ng-view></div>
+			</div>
+
+			<div undo-box></div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Parent</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-3">
+					<div autocomplete-box autocomplete-box-modal class="at-list-viewer">
+						<div class="list-viewer-toolbar">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="title">
+											<span class="fa-stack">
+												<i class="fa fa-th-large"></i>
+												<i class="fa fa-globe"></i>
+											</span>
+											Group
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<input type="text" 
+											   ng-model="search" 
+											   class="form-control input-sm"
+											   ng-model-options="{ debounce: 100 }"
+											   placeholder="Filter or Start a new group...">
+									</div>
+								</div>
+							</div>		
+						</div>
+						<div class="list-viewer-wrapper" style="height: 386px;">
+							<div class="results" ng-show="search.length > 0">
+								<div class="at-list-viewer-item" ng-click="selectGroup($index)" ng-repeat="match in results">
+									<div class="list-viewer-item-wrapper" ng-class="{active: $index === active}">
+										<a href="">
+											<i class="fa fa-th-large"></i>
+											<span ng-bind-html="match.string"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="list" ng-show="search.length === 0">
+								<div class="at-list-viewer-item" ng-click="selectGroup(null, item)" ng-repeat="item in list | orderBy">
+									<div class="list-viewer-item-wrapper" ng-class="{active: selectedOne === item}">
+										<a href="">
+											<i class="fa fa-th-large"></i>
+											{{item}}
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-default panel-sm">
+						<div class="panel-heading">
+							Codes
+						</div>
+						<div class="panel-body panel-no-padding">
+							<div class="row segment-field-heading">
+								<div class="col-md-1">Value</div>
+								<div class="col-md-4">Short Name</div>
+								<div class="col-md-4">Description</div>
+								<div class="col-md-2">Comments</div>
+								<div class="col-md-1">Select</div>
+							</div>
+							<div class="segment-fields" style="height: 400px;">
+								<div ng-repeat="code in modalCodes | orderBy:'codeValue'" class="row panel-row-item">
+									<div class="col-md-1"><div class="code-field">{{code.codeValue}}</div></div>
+									<div class="col-md-4"><div class="code-field">{{code.shortName}}</div></div>
+									<div class="col-md-4"><div class="code-field" title="{{code.description}}">{{code.description}}</div></div>
+									<div class="col-md-2"><div class="code-field">{{code.comments}}</div></div>
+									<div class="col-md-1">
+										<a href="" ng-click="chooseParent(code.codeID)" class="btn btn-default btn-xs" title="Select this as Parent"><i class="fa fa-check-square-o"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-info" ng-click="unselectParent()">Deselect</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		</div>
+	</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

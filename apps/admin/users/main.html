@@ -1,0 +1,77 @@
+<div id="adminPages" class="groups" ng-controller="UsersController">
+	<div at-notification-center>
+		<div ng-repeat="msg in queue.q" class="add-scale">
+			<div at-notification></div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Users
+			<a href="" ng-click="startNew()" title="New User" class="btn btn-xs btn-default" style="margin-left: 5px;">
+				<i class="fa fa-plus"></i>
+			</a>
+			<input type="search" class="form-control input-sm" ng-model="q" placeholder="Filter...">
+		</div>
+		<div class="panel-body">
+			<div class="well" ng-repeat="user in users | filter:q as results">
+				<div class="row">
+					<div class="col-md-1">
+						<div class="user-bubble">
+							<img alt="UserImg" ng-src="{{user.img}}" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						{{user.name}}
+					</div>
+					<div class="col-md-2">
+						{{user.logonID}}
+					</div>
+					<div class="col-md-3">
+						{{user.emailAddress}}
+					</div>
+					<div class="col-md-3" align="right">
+						<a href="" ng-click="onDelete(user)" class="btn btn-danger btn-xs">Delete</a>
+					</div>
+				</div>
+			</div>
+			<div class="well" ng-if="results.length == 0" align="center">
+				No results...
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" users-modal>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Cancel"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">LDAP Users Search</h4>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<input type="search" class="form-control normal-input input-sm" ng-model-options="{updateOn: 'default blur', debounce:{'default':300,'blur':0}}" ng-model="surname" placeholder="Search by surname...">
+						</div>
+						<div class="panel-body" style="height: 300px; overflow-y: scroll;">
+							<div class="well" ng-repeat="user in ldapUsers">
+								<div class="row">
+									<div class="col-md-9">
+										<div user-widget at-user="user" at-type="big"></div>
+									</div>
+									<div class="col-md-3" align="right">
+										<a href="" ng-click="select(user)" class="btn btn-primary btn-xs">Select</a>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>

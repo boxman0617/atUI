@@ -1,0 +1,119 @@
+<div class="row">
+		
+	<div class="col-md-6">
+		
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Layout Info</div>
+			<div class="panel-body">
+				
+				<div class="form-group">
+					<label for="type">Type</label>
+					<input type="text" ng-model="layout.type.name" class="form-control input-sm" id="version" readonly="readonly">
+				</div>
+				
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea rows="2" ng-model="layout.description" placeholder="Layout description" class="form-control" readonly="readonly"></textarea>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-10">
+						<div class="form-group">
+							<label for="version">Version</label>
+							<input type="text" ng-model="layout.version" class="form-control input-sm" id="version" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<a href="" ng-click="cloneVersion()" class="btn btn-sm btn-default" style="margin-top: 20px;padding: 2px 24px;" title="Create a new version">New</a>
+					</div>
+				</div>
+
+				<div class="form-group" ng-if="has_many_versions">
+					<label for="versions">Versions</label>
+					<select id="versions" class="form-control input-sm" ng-change="onVersionChange()" ng-options="v.decimalVersion for v in versions" ng-model="other_version"></select>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="arc">ARC</label>
+							<input type="text" ng-model="layout.init_segments.arc" class="form-control input-sm" id="arc" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="arc">DRC</label>
+							<input type="text" ng-model="layout.init_segments.drc" class="form-control input-sm" id="arc" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="arc">ZRC</label>
+							<input type="text" ng-model="layout.init_segments.zrc" class="form-control input-sm" id="arc" readonly="readonly">
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default panel-sm">
+					<div class="panel-heading">Created</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="created_on">Date</label>
+							<input type="text" tabindex="-1" ng-model="layout.created.on" class="form-control input-sm" id="created_on" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="created_by">By</label>
+							<input type="text" tabindex="-1" ng-model="layout.created.by.name" class="form-control input-sm" id="created_by" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default panel-sm">
+					<div class="panel-heading">Last Updated</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="updated_on">Date</label>
+							<input type="text" tabindex="-1" ng-model="layout.updated.on" class="form-control input-sm" id="updated_on" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="updated_by">By</label>
+							<input type="text" tabindex="-1" ng-model="layout.updated.by.name" class="form-control input-sm" id="updated_by" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default panel-sm">
+					<div class="panel-heading">Locked Status</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="locked_on">Date</label>
+							<input type="text" tabindex="-1" ng-model="layout.updated.on" class="form-control input-sm" id="locked_on" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="locked_by">By</label>
+							<input type="text" tabindex="-1" ng-model="layout.updated.by.name" class="form-control input-sm" id="locked_by" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="col-md-6">
+		<div id="layout-panel" class="panel panel-default panel-sm">
+			<div class="panel-heading">Layout Segments</div>
+			<div class="panel-body panel-no-padding">
+				<div at-layout-segments></div>
+			</div>
+		</div>
+	</div>
+
+</div>

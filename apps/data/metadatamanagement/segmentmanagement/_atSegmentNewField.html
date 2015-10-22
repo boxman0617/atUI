@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+		<div class="form-group">
+			<input type="text" tabindex="-1" readonly="readonly" class="form-control input-sm" ng-model="field.fieldNumber">
+		</div>
+	</div>
+	<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+		<div class="form-group">
+			<input type="text" ng-readonly="readStatus.amIReadOnly" at-field-validation-max-length in="field.name" max="100" class="form-control input-sm field-name" ng-model="field.name">
+		</div>
+	</div>
+	<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+		<div class="form-group">
+			<input type="text" ng-readonly="readStatus.amIReadOnly" at-field-validation-max-length in="field.description" max="255" class="form-control input-sm" ng-model="field.description">
+		</div>
+	</div>
+	<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+		<div class="form-group">
+			<select class="form-control input-sm" ng-disabled="readStatus.amIReadOnly" ng-model="field.dataTypeName" ng-change="setDefaultLength()" ng-options="type for type in types"></select>
+		</div>
+	</div>
+	<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+		<div class="form-group">
+			<input type="text" ng-readonly="readStatus.amIReadOnly" at-field-validation-number in="field.length" class="form-control input-sm" ng-model="field.length">
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="form-group">
+			<select class="form-control input-sm field-lookup" ng-disabled="readStatus.amIReadOnly" ng-model="field.codeTableName" ng-options="code for code in lookupDataset.cache">
+				<option value="">- Choose One -</option>
+			</select>
+		</div>
+	</div>
+	<div class="col-md-1" align="center">
+		<a href="" ng-disabled="readStatus.amIReadOnly" ng-click="removeField()" class="btn btn-danger btn-xs" title="Remove field"><i class="fa fa-trash"></i></a>
+	</div>
+</div>

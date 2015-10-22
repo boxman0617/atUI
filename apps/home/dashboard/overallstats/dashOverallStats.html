@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="dashboard-stat blue">
+			<div class="visual">
+				<i class="fa fa-globe"></i>
+			</div>
+			<div class="details">
+				<div class="number">{{stats.platforms}}</div>
+				<div class="desc">Platforms</div>
+			</div>
+			<a href="#/data/deployments" class="more">
+				Manage <i class="fa fa-arrow-circle-o-right"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="dashboard-stat red">
+			<div class="visual">
+				<i class="fa fa-bookmark"></i>
+			</div>
+			<div class="details">
+				<div class="number">Left Off</div>
+				<div class="desc">{{leftOff.name}}</div>
+			</div>
+			<a href="{{leftOffLocation}}" class="more">
+				Go <i class="fa fa-arrow-circle-o-right"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="dashboard-stat green">
+			<div class="visual">
+				<i class="fa fa-lock"></i>
+			</div>
+			<div class="details">
+				<div class="number">{{stats.layouts}}</div>
+				<div class="desc">Locked Layouts</div>
+			</div>
+			<a href="#/data/metadatamanagement/perspective/record_layout_management" class="more">
+				Manage <i class="fa fa-arrow-circle-o-right"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="dashboard-stat purple">
+			<div class="visual">
+				<i class="fa fa-frown-o"></i>
+			</div>
+			<div class="details">
+				<div class="number">{{stats.segments}}</div>
+				<div class="desc">Unused Segments</div>
+			</div>
+			<a href="#/data/metadatamanagement/perspective/segment_management" class="more">
+				Manage <i class="fa fa-arrow-circle-o-right"></i>
+			</a>
+		</div>
+	</div>
+</div>

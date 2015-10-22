@@ -1,0 +1,89 @@
+<div id="apis" ng-controller="DeploymentCompareController">
+	<div at-notification-center>
+		<div ng-repeat="msg in queue.q" class="add-scale">
+			<div at-notification></div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-3" id="diff-select-deployments" ng-show="!deploymentsSelected">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Select Deployments
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8">
+							<!-- Single button -->
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle btn-sm"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									{{currentSelectedDeployment.name}} <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li ng-repeat="deployment in deployments">
+										<a href="" ng-click="selectDeployment(deployment)">{{deployment.name}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-4" align="right">
+							<button class="btn btn-default btn-sm" ng-click="addForDiff()">Add &rarr;</button>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer" align="right">
+					<button class="btn btn-primary btn-sm" ng-disabled="diffDeployments.length < 2" ng-click="doDeploymentsSelected()">Begin</button>
+				</div>
+			</div>
+		</div>
+		<div ng-class="{
+			'col-md-9': !deploymentsSelected,
+			'col-md-12': deploymentsSelected
+		}">
+			<div class="well" style="text-align: center;" ng-if="diffDeployments.length == 0">
+				Add Deployments First
+			</div>
+			<div ng-if="diffDeployments.length > 0" class="row" synced-scroll-manager>
+				<div ng-repeat="d in diffDeployments" class="col-md-{{12/diffDeployments.length}}">
+					
+					<div class="panel panel-default" full-height-panel>
+						<div class="panel-heading">
+							{{d.name}}
+							<button class="btn btn-default btn-xs pull-right" ng-click="reset()" type="button">Reset</button>
+						</div>
+						<div class="panel-body diff-panel" synced-scroll>
+							<div dynamic-panel-item item-data="deploymentPanels[d.id]" deployment-id="d.id" level="currentLevel"></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="diff-levels" at-modal modal-id="diff-step1-modal" modal-size="modal-sm">
+		<div class="modal-header">
+			<h4 class="modal-title">Please Choose Level</h4>
+		</div>
+		<div class="modal-body" align="center">
+			<div class="btn-group btn-block">
+				<button type="button" class="btn btn-default dropdown-toggle btn-sm btn-block"
+					data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					{{currentLevel}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu btn-block">
+					<li ng-repeat="level in levels">
+						<a href="" ng-click="selectLevel(level)">{{level}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default btn-sm" ng-click="reset()" data-dismiss="modal">Cancel</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="fetchLevel()" data-dismiss="modal">Continue</button>
+		</div>
+	</div>
+</div>

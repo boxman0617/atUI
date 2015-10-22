@@ -1,0 +1,36 @@
+<div ng-if="item.hasOwnProperty('id')">
+	<div ng-if="!item.locked.is">
+		<div class="checked-out-item" ng-if="item.checked_out.is">
+			<div ng-if="item.checked_out.self_checked" align="center">
+				<a href="" ng-click="performCheckIn()" tabindex="-1" class="btn btn-lg btn-primary" title="Check In this {{itemName}}">
+					<i class="fa fa-checked_out-false"></i>
+				</a>
+			</div>
+			<div ng-if="!item.checked_out.self_checked">
+				<div class="form-group">
+					<label for="checked_out_on">Date</label>
+					<input type="text" tabindex="-1" ng-model="item.checked_out.on" class="form-control input-sm" id="checked_out_on" ng-required="true" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label for="checked_out_by">By</label>
+					<input type="text" tabindex="-1" ng-model="item.checked_out.by.name" class="form-control input-sm" id="checked_out_by" ng-required="true" readonly="readonly">
+				</div>
+			</div>
+		</div>
+		<div class="checked-in-item" ng-if="!item.checked_out.is" align="center">
+			<a href="" ng-click="performCheckOut()" tabindex="-1" class="btn btn-lg btn-primary" title="Check Out this {{itemName}}">
+				<i class="fa fa-checked_out-true"></i>
+			</a>
+		</div>
+	</div>
+
+	<div ng-if="item.locked.is" class="no-check-out-in">
+		<h3>Unable to check out/in</h3>
+	</div>
+</div>
+
+<div ng-if="!item.hasOwnProperty('id')">
+	<div class="no-check-out-in">
+		<h3>Must create {{itemName}} first.</h3>
+	</div>
+</div>

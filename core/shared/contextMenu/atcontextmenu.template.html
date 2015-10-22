@@ -1,0 +1,7 @@
+<div class="context-menu" ng-show="showMenu">
+	<div class="context-menu-item" ng-repeat="item in items" ng-class="{disabled: item.isDisabled()}">
+		<a href="" ng-click="fire(item)">
+			<i class="fa" ng-class="item.getIcon()"></i> {{item.getName()}}
+		</a>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div id="metadata-management" ng-controller="SegmentManagementController">
+	<div class="row">
+		<div class="col-md-2">
+			<div at-list-viewer 
+				id="segment-list-viewer" 
+				icon="segment" 
+				at-title="Segments" 
+				new-hover-title="Create new Segment" 
+				list="segmentList"
+				loaded="listLoaded" 
+				on-select="selectSegment(item)" 
+				new-item="newSegment()"></div>
+		</div>
+		<div class="col-md-10">
+			<div class="include-slide" ng-include="current_view"></div>
+		</div>
+	</div>
+</div>

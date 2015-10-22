@@ -1,0 +1,40 @@
+<div class="diff-item-inner diff-item-code" ng-mouseenter="mouseOver(item)" ng-mouseleave="mouseLeave(item)" ng-click="openCode()" ng-class="{'missing': item.__MISSING}">
+	<div class="name">{{item.shortName}}</div>
+	<span class="label label-danger">Code</span>
+</div>
+
+<div class="details" ng-show="exploded">
+	<div class="field-info item-info">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Code Details</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">Short Name:</div>
+					<div class="col-md-8" ng-bind-html="details.__shortName"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Value:</div>
+					<div class="col-md-8" ng-bind-html="details.__codeValue"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Comments:</div>
+					<div class="col-md-8" ng-bind-html="details.__comments"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Description:</div>
+					<div class="col-md-8" ng-bind-html="details.__description"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Display Order:</div>
+					<div class="col-md-8" ng-bind-html="details.__displayOrder"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Parent:</div>
+					<div class="col-md-8">
+						{{parent.groupingName}} - {{parent.shortName}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

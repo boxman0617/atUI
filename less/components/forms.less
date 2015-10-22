@@ -1,0 +1,70 @@
+input[required="required"], 
+select[required="required"], 
+select[required="required"] + .bootstrap-select button,
+.is-req {
+	border-left: 4px solid @forms-required-field-border-color;
+}
+
+label {
+	font-size: 11px;
+	margin-bottom: 2px !important;
+	color: lighten(#000000, 60%) !important;
+	margin-left: 5px;
+}
+
+::-webkit-input-placeholder {
+   color: @cool_grey_4 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: @cool_grey_4 !important;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: @cool_grey_4 !important;  
+}
+
+:-ms-input-placeholder {  
+   color: @cool_grey_4 !important;  
+}
+
+.editable-wrap {
+	display: block !important;
+}
+
+.input-sm {
+	.dropdown-toggle {
+		padding: 5px 10px;
+		.filter-option {
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
+
+	& + .bootstrap-tagsinput {
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 20px;
+		min-height: 30px;
+	}
+}
+
+.address-container.ng-invalid {
+	border: 1px solid @bootstrap-red;
+	padding: 5px;
+	.rounded(5px);
+}
+
+.btn-submit {
+	background-color: @button-submit-background-color;
+	color: @white;
+}
+
+.input-rows {
+	.input-col {
+		border-right: 1px solid @grey-border;
+		&:last-child {
+			border-right: none;
+		}
+	}
+}

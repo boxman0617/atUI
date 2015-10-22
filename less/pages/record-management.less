@@ -1,0 +1,142 @@
+.row:first-child {
+	.section-suggestion {
+		margin-top: 0;
+	}
+}
+
+.divider {
+	background-color: @grey-border;
+	height: 1px;
+	margin: 15px 0;
+}
+
+.section-suggestion {
+	margin: 15px 0 15px 0;
+	color: lighten(@darker_grey, 10%);
+	font-size: 17px;
+}
+
+.dim-trans {
+	.transition(0.5s, ease-in-out);
+}
+
+.dim {
+	.opacity(0.2);
+}
+
+#saved-files {
+	#record-toolbar {
+		margin-bottom: 10px;
+	}
+
+	.table {
+		thead {
+			tr {
+				th {
+					background: @table-thead-background-color-start;
+					background: -moz-linear-gradient(top,  @table-thead-background-color-start 0%, @table-thead-background-color-end 100%);
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@table-thead-background-color-start), color-stop(100%,@table-thead-background-color-end));
+					background: -webkit-linear-gradient(top,  @table-thead-background-color-start 0%,@table-thead-background-color-end 100%);
+					background: -o-linear-gradient(top,  @table-thead-background-color-start 0%,@table-thead-background-color-end 100%);
+					background: -ms-linear-gradient(top,  @table-thead-background-color-start 0%,@table-thead-background-color-end 100%);
+					background: linear-gradient(to bottom,  @table-thead-background-color-start 0%,@table-thead-background-color-end 100%);
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{@table-thead-background-color-start}', endColorstr='{@table-thead-background-color-end}',GradientType=0 );
+
+				}
+			}
+		}
+		tbody {
+			tr {
+				&:hover {
+					td {
+						a.btn-hover-only {
+							opacity: 1;
+						}
+					}
+				}
+				td {
+					vertical-align: middle;
+					a.btn {
+						font-size: 10px;
+					}
+					a.btn-hover-only {
+						opacity: 0.3;
+					}
+				}
+			}
+		}
+	}
+}
+
+#undo {
+	position: fixed;
+	bottom: @footer-height;
+	left: 0;
+	right: 0;
+	background-color: @undo-background-color;
+	text-align: center;
+	padding: 10px 0;
+	.dismiss {
+		position: absolute;
+		top: 10px;
+		right: 11px;
+	}
+}
+
+#workspace {
+	position: relative;
+	.workspace-panel {
+		&.workspace-panel-enter, &.workspace-panel-leave {
+			position: absolute;
+			top: 0; left: 0; right: 0;
+		}
+
+		&.workspace-panel-enter {
+			-webkit-animation: 1s panel-slide-in;
+			-moz-animation: 1s panel-slide-in;
+			-o-animation: 1s panel-slide-in;
+			animation: 1s panel-slide-in;
+		} 
+		&.workspace-panel-leave {
+			-webkit-animation: 1s panel-slide-out;
+			-moz-animation: 1s panel-slide-out;
+			-o-animation: 1s panel-slide-out;
+			animation: 1s panel-slide-out;
+		}
+	}
+}
+
+#newFileModal {
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	    /* display: none; <- Crashes Chrome on hover */
+	    -webkit-appearance: none;
+	    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+}
+
+@keyframes panel-slide-in {
+	from { left: 100%; }
+	to { left: 0; }
+}
+@-moz-keyframes panel-slide-in {
+	from { left: 100%; }
+	to { left: 0; }
+}
+@-webkit-keyframes panel-slide-in {
+	from { left: 100%; }
+	to { left: 0; }
+}
+
+@keyframes panel-slide-out {
+	from { left: 0; }
+	to { left: -100%; }
+}
+@-moz-keyframes panel-slide-out {
+	from { left: 0; }
+	to { left: -100%; }
+}
+@-webkit-keyframes panel-slide-out {
+	from { left: 0; }
+	to { left: -100%; }
+}

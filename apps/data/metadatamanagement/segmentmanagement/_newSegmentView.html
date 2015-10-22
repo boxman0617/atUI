@@ -1,0 +1,137 @@
+<div class="new-segment-editor" ng-controller="NewSegmentController">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default panel-sm">
+				<div class="panel-heading">New Segment</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6" ng-form name="UniqueSegmentNameForm">
+							<div class="form-group" show-errors>
+								<label for="name">Name</label>
+								<input type="text" autofocus at-segment-name-input ng-change="checkName()" name="name" ng-minlength="3" ng-model="segment.name" class="form-control input-sm" id="name" placeholder="Three letter Segment name" ng-required="true">
+								<span class="help-block" ng-if="UniqueSegmentNameForm.name.$error.unique">
+									Segment name must be unique!
+								</span>
+								<span class="help-block" ng-if="UniqueSegmentNameForm.name.$error.minlength">
+									Segment name must be 3 letters long!
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" show-errors>
+								<label for="full_name">Full Name</label>
+								<input type="text" ng-model="segment.shortDescription" class="form-control input-sm" id="full_name" placeholder="Full name of segment" ng-required="true">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input type="text" ng-model="segment.description" at-field-validation-max-length max="255" class="form-control input-sm" id="description" placeholder="Segment description">
+					</div>
+					<div class="form-group" show-errors>
+						<label for="version">Version</label>
+						<input type="text" ng-model="segment.version" class="form-control input-sm" id="version" ng-pattern="/\d+\.\d+/" ng-required="true">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+			<div class="panel panel-default panel-sm">
+				<div class="panel-heading">Created</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="created_on">Date</label>
+						<input type="text" tabindex="-1" ng-model="segment.created.on" class="form-control input-sm" id="created_on" ng-required="true" readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label for="created_by">By</label>
+						<input type="text" tabindex="-1" ng-model="segment.created.by.name" class="form-control input-sm" id="created_by" ng-required="true" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div class="panel panel-default panel-sm">
+				<div class="panel-heading">Last Updated</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="updated_on">Date</label>
+						<input type="text" tabindex="-1" ng-model="segment.updated.on" class="form-control input-sm" id="updated_on" ng-required="true" readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label for="updated_by">By</label>
+						<input type="text" tabindex="-1" ng-model="segment.updated.by.name" class="form-control input-sm" id="updated_by" ng-required="true" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div class="panel panel-default panel-sm">
+				<div class="panel-heading">
+					Locked Status
+					<i class="fa fa-locked-{{segment.locked.is}}" title="{{segmentLockedMessage(segment.locked.is)}}"></i>
+				</div>
+				<div class="panel-body">
+					<div at-item-locked item="segment" item-name="segment"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="panel panel-default panel-sm">
+				<div class="panel-heading">
+					Checked Out Status
+					<i class="fa fa-checked_out-{{segment.checked_out.is}}" title="{{segmentCheckedOutMessage(segment.checked_out.is)}}"></i>
+				</div>
+				<div class="panel-body">
+					<div at-item-checked-out item="segment" item-name="segment"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="fields-panel" class="panel panel-default panel-sm">
+				<div class="panel-heading">
+					Fields
+					<div class="panel-tools">
+						<div class="btn-group btn-group-xs" role="group">
+							<button tabindex="-1" type="button" class="btn btn-default" title="Expand to full screen" at-full-screen-button>
+								<i class="fa fa-expand"></i>
+							</button>
+							<button tabindex="-1" type="button" class="btn btn-default" title="Add new Field" ng-click="addNewField()">
+								<i class="fa fa-plus"></i>
+							</button>
+							<button tabindex="-1" type="button" at-lookup-refresh-button class="btn btn-default" title="Refresh Lookup table">
+								<i class="fa fa-refresh"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body panel-no-padding">
+					<div class="row segment-field-heading">
+						<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Number</h3></div>
+						<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Name</h3></div>
+						<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3"><h3>Description</h3></div>
+						<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Type</h3></div>
+						<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Length</h3></div>
+						<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"><h3>Lookup</h3></div>
+						<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><h3>Action</h3></div>
+					</div>
+					<div class="segment-fields" at-segment-fields>
+						<div at-segment-new-field class="fx-fade-down" field="field" last="$last" first="$first" new-action="addNewField" lookup-dataset="lookupDataset" ng-repeat="field in segment.fields"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12" align="right">
+			<a href="" id="segment-create-button" ng-click="createNewSegment()" ng-disabled="canCreate()" class="btn btn-primary btn-sm">Create</a>
+		</div>
+	</div>
+</div>

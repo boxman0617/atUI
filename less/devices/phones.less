@@ -1,0 +1,72 @@
+// Devices: Phone
+// Less then @phones
+@media (max-width: @phones) {
+	#header, #footer {
+		.transform(translateZ(0));
+	}
+	#header {
+		.logo {
+			.name {
+				left: 46px !important;
+			}
+			.navigation-toggle {
+				bottom: 8px !important;
+				left: 5px;
+				width: 36px;
+				height: 25px;
+				a {
+					width: 100% !important;
+					height: 100% !important;
+					.rounded(5px) !important;
+					background-color: @logo_blue !important;
+					color: @app-user-info-link-color !important;
+					padding-top: 2px;
+					i:before {
+						content: "\f0c9" !important;
+					}
+					border: 1px solid darken(@app-user-info-link-color, 10%) !important;
+				}
+			}
+		}
+		.toolbar {
+			display: none;
+		}
+	}
+
+	#navigation {
+		margin-top: @header-height + 1px;
+		position: static !important;
+		width: 100% !important;
+		top: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		margin-bottom: (@header-height + 1px) * -1;
+	}
+
+	#stage {
+		position: static !important;
+		margin-top: @header-height + 1px;
+		left: auto !important;
+		top: auto !important;
+		right: auto !important;
+	}
+
+	#navbar-report-parent {
+		display: none;
+	}
+
+	#report {
+		.xs-margin-bottom {
+			margin-bottom: 30px;
+		}
+		.xs-margin-top {
+			margin-top: 30px;
+		}
+		.xs-center {
+			text-align: center;
+			.score-title {
+				text-align: left;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+<div ng-controller="MGMAController">
+	<div id="mgma">
+		<div class="toolbar">
+			<div perspective-button ng-repeat="p in perspectives"></div>
+		</div>
+		<div class="mgma-stage">
+			<div class="include-fade" ng-include="view.include" ng-repeat="view in loadedPerspectives" ng-show="view.active"></div>
+		</div>
+	</div>
+	
+	<div at-notification-center>
+		<div ng-repeat="msg in queue.q" class="add-scale">
+			<div at-notification></div>
+		</div>
+	</div>
+</div>

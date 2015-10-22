@@ -1,0 +1,23 @@
+<div ng-if="item.hasOwnProperty('id')">
+	<div class="locked-item" ng-if="item.locked.is">
+		<div class="form-group">
+			<label for="locked_on">Date</label>
+			<input tabindex="-1" type="text" ng-model="item.locked.on" class="form-control input-sm" id="locked_on" ng-required="true" readonly="readonly">
+		</div>
+		<div class="form-group">
+			<label for="locked_by">By</label>
+			<input tabindex="-1" type="text" ng-model="item.locked.by.name" class="form-control input-sm" id="locked_by" ng-required="true" readonly="readonly">
+		</div>
+	</div>
+	<div class="unlocked-item" ng-if="!item.locked.is" align="center">
+		<a href="" ng-click="lockAction()" tabindex="-1" class="btn btn-lg btn-primary" title="Lock this {{itemName}}" ng-disabled="disable_lock">
+			<i class="fa fa-lock"></i>
+		</a>
+	</div>
+</div>
+
+<div ng-if="!item.hasOwnProperty('id')">
+	<div class="no-check-out-in">
+		<h3>Must create {{itemName}} first.</h3>
+	</div>
+</div>

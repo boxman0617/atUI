@@ -1,0 +1,62 @@
+<div class="col-md-2">
+	<div class="row">
+		<div class="col-md-2" align="center">
+			<input type="checkbox" ng-readonly="isReadOnly" ng-model="selected" ng-show="!trashMode" />
+			<button type="button" ng-show="trashMode" ng-click="deleteMe(code)" class="btn btn-xs btn-danger">
+				<i class="fa fa-trash"></i>
+			</button>
+		</div>
+		<div class="col-md-3">
+			<input type="text" ng-readonly="true" class="form-control input-sm" ng-model="code.codeValue" />
+		</div>
+		<div class="col-md-7">
+			<input type="text" ng-readonly="isReadOnly" class="form-control input-sm" ng-model="code.shortName" />
+		</div>
+	</div>
+</div>
+
+<div class="col-md-5">
+	<div class="row">
+		<div class="col-md-4">
+			<input type="text" ng-readonly="isReadOnly" class="form-control input-sm" ng-model="code.description" />
+		</div>
+		<div class="col-md-3">
+			<input type="text" ng-readonly="isReadOnly" class="form-control input-sm" ng-model="code.comments" />
+		</div>
+		<div class="col-md-5">
+			<span class="label label-default" ng-click="chooseParent()" ng-if="code.parentID == 0">{{parent}}</span>
+			<span class="label label-info" ng-click="chooseParent()" ng-if="code.parentID != 0" title="{{parent.groupingName}} - {{parent.shortName}}">{{parent.groupingName}} - {{parent.shortName}}</span>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-5">
+	<div class="row">
+		<div class="col-md-1">
+			<input type="text" ng-readonly="isReadOnly" class="form-control input-sm" ng-model="code.displayOrder" />
+		</div>
+		<div class="col-md-2">
+			<input type="text" ng-readonly="true" class="form-control input-sm" ng-model="createdByName" />
+		</div>
+		<div class="col-md-3">
+			<input type="text" ng-readonly="true" class="form-control input-sm" value="{{code.createdTimestamp | amDateFormat:'MM/DD/YY hh:mm a'}}" />
+		</div>
+		<div class="col-md-2">
+			<input type="text" ng-readonly="true" class="form-control input-sm" ng-model="updatedByName" />
+		</div>
+		<div class="col-md-3">
+			<input type="text" ng-readonly="true" class="form-control input-sm" value="{{code.updatedTimestamp | amDateFormat:'MM/DD/YY hh:mm a'}}" />		
+		</div>
+		<!-- <div class="col-md-1" align="center">
+			<a href="" class="btn btn-default btn-xs" ng-if="isReadOnly">
+				<i class="fa fa-locked-true"></i>
+			</a>
+			<a href="" class="btn btn-default btn-xs" ng-if="!isReadOnly" title="Lock this code">
+				<i class="fa fa-unlock-alt"></i>
+			</a>
+		</div> -->
+		<div class="col-md-1" align="center">
+			<i class="fa fa-exclamation-triangle" ng-if="changed" title="Something changed!"></i>
+		</div>
+	</div>
+</div>

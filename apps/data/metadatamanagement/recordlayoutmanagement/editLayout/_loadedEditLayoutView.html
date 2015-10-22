@@ -1,0 +1,132 @@
+<div class="row">
+		
+	<div class="col-md-3">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Layout</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="type">Type</label>
+					<select autofocus ng-model="layout.type" class="form-control input-sm" ng-options="t.name for t in types" ng-required="true" ng-disabled="true"></select>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea rows="2" ng-model="layout.description" placeholder="Layout description" class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="version">Version</label>
+					<input type="text" ng-model="layout.version" class="form-control input-sm" id="version" ng-required="true">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-1">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Setup</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="type">ARC</label>
+					<select ng-model="init_segments_selected.arc" class="form-control input-sm" ng-options="seg.version for seg in init_segments.arc" ng-required="true"></select>
+				</div>
+				<div class="form-group">
+					<label for="type">DRC</label>
+					<select ng-model="init_segments_selected.drc" class="form-control input-sm" ng-options="seg.version for seg in init_segments.drc" ng-required="true"></select>
+				</div>
+				<div class="form-group">
+					<label for="type">ZRC</label>
+					<select ng-model="init_segments_selected.zrc" class="form-control input-sm" ng-options="seg.version for seg in init_segments.zrc" ng-required="true"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Created</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="created_on">Date</label>
+					<input type="text" tabindex="-1" ng-model="layout.created.on" class="form-control input-sm" id="created_on" ng-required="true" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label for="created_by">By</label>
+					<input type="text" tabindex="-1" ng-model="layout.created.by.name" class="form-control input-sm" id="created_by" ng-required="true" readonly="readonly">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Last Updated</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="updated_on">Date</label>
+					<input type="text" tabindex="-1" ng-model="layout.updated.on" class="form-control input-sm" id="updated_on" ng-required="true" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label for="updated_by">By</label>
+					<input type="text" tabindex="-1" ng-model="layout.updated.by.name" class="form-control input-sm" id="updated_by" ng-required="true" readonly="readonly">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">
+				Locked Status
+				<i class="fa fa-locked-{{layout.locked.is}}" title="{{lockedMessage(layout.locked.is)}}"></i>
+			</div>
+			<div class="panel-body">
+				<div at-item-locked item="layout" item-name="layout" lock-action="lockLayout()"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-2">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">
+				Checked Out Status
+				<i class="fa fa-checked_out-{{layout.checked_out.is}}" title="{{checkedOutMessage(layout.checked_out.is)}}"></i>
+			</div>
+			<div class="panel-body">
+				<div at-item-checked-out check-out-action="checkOut(cb)" check-in-action="checkIn(cb)" item="layout" item-name="layout"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row" at-layout-panels id="layout-panels">
+	<div class="col-md-4">
+		<div id="layout-panel" class="panel panel-default panel-sm">
+			<div class="panel-heading">Layout</div>
+			<div class="panel-body panel-no-padding">
+				<div at-layout-dropzone></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div id="segment-list-panel" class="panel panel-default panel-sm">
+			<div class="panel-heading">Segments</div>
+			<div class="panel-body panel-no-padding">
+				<div at-segment-picker></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div id="segment-view-panel" class="panel panel-default panel-sm">
+			<div class="panel-body">
+				<div at-segment-preview ng-class="{'no-preview': preview.segment === null}"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12" align="right">
+		<a href="" id="layout-delete-button" ng-click="deleteLayout()" title="Delete this Version" class="btn btn-danger btn-sm pull-left">Delete</a>
+		<a href="" id="layout-action-button" ng-click="updateLayout()" class="btn btn-primary btn-sm">Update</a>
+	</div>
+</div>

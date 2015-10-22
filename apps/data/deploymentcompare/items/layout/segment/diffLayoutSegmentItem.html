@@ -1,0 +1,34 @@
+<div class="diff-item-inner diff-item-layout-segment" ng-mouseenter="mouseOver(item)" ng-mouseleave="mouseLeave(item)" ng-click="openSegment()" ng-class="{'missing': item.__MISSING}">
+	<div class="name">{{item.name}}</div>
+	<span class="label label-info">Segment</span>
+</div>
+
+<div class="details" ng-show="exploded">
+	<div class="segment-info item-info">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Segment Details</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">Description:</div>
+					<div class="col-md-8" ng-bind-html="segment.__description"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Short Desc.:</div>
+					<div class="col-md-8" ng-bind-html="segment.__shortDescription"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">Version:</div>
+					<div class="col-md-8">{{segment.version / 100}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="panel panel-default panel-sm">
+			<div class="panel-heading">Fields</div>
+			<div class="panel-body fields-panel"></div>
+		</div>
+	</div>
+</div>
+
+<div class="children children-{{item.children.length}}"></div>

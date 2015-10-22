@@ -1,0 +1,44 @@
+<div class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">New Data Type</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="panel panel-default panel-sm">
+							<div class="panel-heading">Data Types</div>
+							<div class="panel-body panel-no-padding" style="height: 150px;">
+								<div class="panel-list">
+									<div class="panel-list-item" ng-repeat="type in types">{{type.name}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8" ng-form name="newTypeForm">
+						<div class="form-group" show-errors>
+							<label for="name">Name</label>
+							<input type="text" autofocus at-type-name-input ng-change="checkName()" name="name" ng-minlength="3" ng-model="type.name" class="form-control input-sm" id="name" placeholder="Three letter Data Type name" ng-required="true">
+							<span class="help-block" ng-if="newTypeForm.name.$error.unique">
+								Type name must be unique!
+							</span>
+							<span class="help-block" ng-if="newTypeForm.name.$error.minlength">
+								Type name must be 3 letters long!
+							</span>
+						</div>
+						<div class="form-group">
+							<label for="description">Description</label>
+							<input type="text" ng-model="type.description" at-field-validation-max-length max="255" class="form-control input-sm" id="description" placeholder="Data Type description">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+				<button type="button" class="btn btn-primary" ng-click="createType()">Create</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

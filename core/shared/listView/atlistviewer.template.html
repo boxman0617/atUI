@@ -1,0 +1,41 @@
+<div class="list-viewer-toolbar">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="title">
+					<span class="fa-stack">
+						<i class="fa fa-{{icon}}"></i>
+						<i class="fa fa-globe"></i>
+					</span>
+					{{title}}
+				</div>
+			</div>
+			<div class="col-md-4" align="right">
+				<a href="" ng-click="newItem()" title="{{newHoverTitle}}" class="btn btn-default btn-xs">
+					<span class="fa-stack">
+						<i class="fa fa-{{icon}}"></i>
+						<i class="fa fa-plus"></i>
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>		
+</div>
+<div class="list-viewer-wrapper">
+	<div ng-repeat="item in list | filter:{show_in_list:true} | orderBy:'name'">
+		<div at-list-viewer-item icon="icon" item="item" ng-click="onSelect({'item': item})"></div>
+	</div>
+</div>
+<div class="partial-load-screen" ng-class="{loading: isLoading}">
+	<div class="spinner ball-grid-pulse">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>

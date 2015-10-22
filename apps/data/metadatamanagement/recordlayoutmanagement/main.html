@@ -1,0 +1,21 @@
+<div id="metadata-management" ng-controller="RecordLayoutManagementController">
+	<div class="row">
+		<div class="col-md-2">
+			<div at-list-viewer 
+				id="record-layout-list-viewer" 
+				icon="sitemap" 
+				new-hover-title="Create new Layout" 
+				at-title="Layouts" 
+				list="layoutList" 
+				loaded="listLoaded"
+				on-select="selectLayout(item)" 
+				new-item="newLayout()">
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="include-slide" ng-include="current_view"></div>
+		</div>
+	</div>
+
+	<div new-type-modal></div>
+</div>

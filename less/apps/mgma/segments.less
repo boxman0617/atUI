@@ -1,0 +1,134 @@
+// App Segments
+.segment-fields {
+	overflow-y: scroll;
+}
+
+.segment-field-heading {
+	padding-right: 17px;
+	[class^="col-"] {
+		padding: 5px;
+	}
+	h3 {
+		margin: 0;
+		font-size: 14px;
+	}
+	background-color: lighten(@cool_grey_4, 15%);
+	border-bottom: 1px solid @cool_grey_4;
+}
+
+[at-segment-new-field], .panel-row-item {
+	[class^="col-"] {
+		padding: 1px;
+	}
+	.form-group {
+		margin: 0;
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
+[at-segment-locked], [at-item-locked], [at-segment-checked-out], [at-item-checked-out] {
+	.btn-lg {
+		margin: 10px 0;
+	}
+	.no-check-out-in {
+		text-align: center;
+		h3 {
+			font-size: 14px;
+			margin: 12px 0 3px;
+		}
+	}
+}
+
+html.dragging-something * {
+	cursor: -moz-grabbing !important;
+	cursor: -webkit-grabbing !important;
+	cursor: grabbing !important;
+	.user-select(none);
+}
+
+[at-segment-picker] {	
+	.user-select(none);
+	.full-height();
+	overflow-y: scroll;
+	[at-segment-picker-segment] {
+		&:hover {
+			background-color: darken(@white, 2%);
+		}
+		border-bottom: solid @light_grey 1px;
+		&:last-child {
+			border-bottom-width: 0;
+		}
+		height: 40px;
+		padding: 5px 0;
+		.segment-pick {
+			cursor: -moz-grab;
+			cursor: -webkit-grab;
+			cursor: grab;
+			height: 30px;
+			padding: 5px 0;
+		}
+	}
+}
+
+#segment-drag {
+	width: 100px;
+	padding: 2px 5px;
+	background-color: @brand_color_4;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+	position: fixed;
+
+	.box-shadow(0 5px 25px 0 rgba(0,0,0,.3));
+}
+
+#segment-view-panel {
+	.panel-body {
+		height: 100%;
+		[at-segment-preview] {
+			height: 100%;
+			.preview-wrapper {
+				height: 100%;
+				.scroll-rows {
+					overflow-x: hidden;
+					overflow-y: scroll;
+				}
+			}
+		}
+	}
+}
+
+[at-segment-preview] {
+	&.no-preview {
+		backgroud-color: #666666;
+	}
+	padding: 4px 0;
+	.field-list {
+		margin-top: 5px;
+		[class^="col-"] {
+			&:first-child {
+				padding-left: 15px;
+			}
+			padding: 0;
+			&:last-child {
+				padding-right: 15px;
+			}
+		}
+	}
+	.preview-wrapper {
+		&.no-preview {
+			position: relative;
+			.center-text {
+				position: absolute;
+				left: 50%;
+				margin-left: -34px;
+				top: 175px;
+			}
+			.engraved {
+				color: darken(@light_grey, 20%);
+			}
+		}
+	}
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUI" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUI" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="atUI" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>atUI</title>
+
+		<!-- LINK:CSS:START -->
+		<!-- LINK:CSS:END -->
+
+		<link href="assets/css/target/main.css" rel="stylesheet">
+
+		<!--[if lte IE 8]>
+		<script>
+			document.createElement('tags-input');
+		</script>
+		<![endif]-->
+	    <style>
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
+	    </style>
+	    <!--[if gte IE 9]>
+		  <style type="text/css">
+		    .gradient {
+		       filter: none;
+		    }
+		  </style>
+		<![endif]-->
+	</head>
+	<body id="app" ng-controller="AppController" ng-cloak>
+		
+		<div ng-include="isOk"></div>
+
+		<div id="footer">
+			<div class="patent">atUI Copyright</div>
+			<div memory-footprint style="position: absolute; bottom: -1px; right: 5px;"></div>
+		</div>
+
+		<div alert-box></div>
+		<div login-modal></div>
+		<div at-context-menu></div>
+
+		<!--[if !IE]> -->
+		<div id="loading-screen" ng-show="show" loading-screen>
+			<div class="spinner ball-grid-pulse">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<!-- <![endif]-->
+
+		<!-- LINK:JS:IE8:START -->
+		<!-- LINK:JS:IE8:END -->
+		
+		<!-- LINK:JS:IE:START -->
+		<!-- LINK:JS:IE:END -->
+		
+		<!-- LINK:JS:START -->
+		<!-- LINK:JS:END -->
+
+		<!-- ANGULARJS APP -->
+		<script type="text/javascript" src="assets/js/target/app.min.js"></script>
+	</body>
+</html>

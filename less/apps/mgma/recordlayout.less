@@ -1,0 +1,87 @@
+// Record Layout
+#layout-panels {
+	padding-bottom: 20px;
+	& > [class^="col-"] {
+		height: 100%;
+		.panel {
+			margin: 0;
+			height: 100%;
+		}
+	}
+}
+
+#layout-panel {
+	& > .panel-body {
+		overflow: scroll;
+	}
+}
+
+[at-layout-dropzone], [at-layout-segments] {
+	[at-layout-segment-dropzone], [at-layout-segment-start] {
+		@p-top: 10px;
+		@p-left: 15px;
+		@h: 40px;
+		min-height: @h;
+		min-width: 175px;
+		
+		.segment-main.over-dropzone {
+//			& > .segment-main {
+				background-color: lighten(@green, 50%);
+//			}
+		}
+		.segment-main {
+//			&:hover {
+//				background-color: darken(@white, 3%);
+//			}
+			position: relative;
+			height: @h;
+			padding: @p-top @p-left;
+			cursor: default;
+			.segment-icon, .segment-name {
+				position: absolute;
+			}
+			.segment-icon {
+				top: @p-top;
+				left: @p-left;
+			}
+			.segment-name {
+				top: @p-top;
+				left: @p-left + 20px;
+			}
+		}
+		.segment-children {
+			padding-left: 25px;
+			[at-layout-segment-dropzone]:first-child, [at-layout-segment-start]:first-child {
+				.segment-main {
+					&:before {
+						top: -4px;
+						left: -5px;
+						width: 1px;
+						height: 26px;
+					}
+				}
+			}
+			[at-layout-segment-dropzone], [at-layout-segment-start] {
+				position: relative;
+				&:before, &:after {
+					content: '';
+					position: absolute;
+					display: block;
+				}
+				&:before {
+					top: 0;
+					left: -6px;
+					bottom: 0;
+					width: 0;
+					border-left: 1px solid lighten(@dark_grey, 15%);
+				}
+				&:after {
+					top: 20px;
+					left: -5px;
+					width: 14px;
+					border-top: 1px solid lighten(@dark_grey, 15%);
+				}
+			}
+		}
+	}
+}
